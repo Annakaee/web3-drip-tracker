@@ -1,21 +1,57 @@
 import React from 'react';
-import { DashboardLayout } from './DashboardLayout';
-import { ActiveStreams } from './ActiveStreams';
+import './index.css';
 
 export default function App() {
   return (
-    <DashboardLayout>
-      <div style={{ padding: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#1a1a1a' }}>Your Drips Dashboard</h1>
-        <p style={{ color: '#666', marginBottom: '2rem' }}>Manage your active streaming finance contracts across the Stellar network.</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-          <ActiveStreams />
-          <div style={{ padding: '1.5rem', background: '#f8f9fa', borderRadius: '8px' }}>
-            <h2>Analytics</h2>
-            <p>Total Value Streamed: ,450.00</p>
+    <div className="layout-container">
+      <aside className="sidebar">
+        <h2>💧 DripTracker</h2>
+        <ul>
+          <li className="active">Dashboard</li>
+          <li>My Streams</li>
+          <li>Vesting</li>
+          <li>Settings</li>
+        </ul>
+      </aside>
+      <main className="main-content">
+        <header className="topbar glass-panel" style={{ borderRadius: 0, borderTop: 0, borderLeft: 0, borderRight: 0 }}>
+          <button className="btn-connect">Connect Wallet</button>
+        </header>
+        <div className="dashboard">
+          <h1>Your Dashboard</h1>
+          <p>Manage your active streaming finance contracts across the Stellar network.</p>
+          
+          <div className="grid-layout">
+            <div className="glass-panel" style={{ padding: '2rem' }}>
+              <h2 style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Active Streams</h2>
+              
+              <div className="stream-card glass-panel">
+                <div className="stream-header">
+                  <span className="stream-title">Dev Salary</span>
+                  <span className="stream-amount">500 USDC / mo</span>
+                </div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Streaming to: G_ALICE...</div>
+              </div>
+
+              <div className="stream-card glass-panel">
+                <div className="stream-header">
+                  <span className="stream-title">Marketing Fund</span>
+                  <span className="stream-amount">1,000 XLM / mo</span>
+                </div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Streaming to: G_BOB...</div>
+              </div>
+            </div>
+            
+            <div className="glass-panel" style={{ padding: '2rem' }}>
+              <h2 style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>Analytics</h2>
+              <div style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--accent)' }}>
+                ,450
+              </div>
+              <p style={{ color: 'var(--text-secondary)' }}>Total Value Streamed</p>
+            </div>
           </div>
         </div>
-      </div>
-    </DashboardLayout>
+      </main>
+    </div>
   );
 }
